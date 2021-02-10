@@ -38,7 +38,10 @@ jobs:
         login-server: ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-
+        
+    - name: ls
+      run: pwd && ls -la
+    
     - run: |
         docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/githubwebapp:${{ github.sha }} .
         docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/githubwebapp:${{ github.sha }} 
